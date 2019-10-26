@@ -1,0 +1,396 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+         box-sizing: border-box;
+}
+
+body {
+    width: 1600px;
+    margin: 0 auto;
+}
+/* header 样式 */
+header {
+    background: url("前端学院设计图_0000s_0002s_0001_Background.png") no-repeat,
+    url("前端学院设计图_0000s_0002s_0002_图层-1.png") no-repeat;
+    height: 990px;
+    position: relative;
+   padding: 1px;
+}
+
+.header-container {
+    width: 75%;
+    height: 70%;
+    margin: auto;
+    margin-top:10%;
+    margin-bottom: 20%;
+    text-align: center;
+    color: #fff;
+}
+
+.header-container .hello {
+    margin-bottom: 5%;
+    font-size: 4em;
+    color: #fff;
+}
+
+.header-container p {
+    width: 55%;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, .2);
+}
+
+.header-container div {
+    width: 100%;
+    height:40%;
+    padding: 5% 0;
+    margin: 10% auto;
+    border: 1px solid rgba(217, 217, 217, .2);
+}
+.header-container .account {
+    font-size: 1em;
+    margin-bottom: 1em;
+    color: #fff;
+}
+#userName, #password {
+    height: 4em;
+    width: 30%;
+    margin: 30px 20px;
+    background-color: transparent;
+    border: 1px solid rgba(217, 217, 217, .2);
+    padding-left: 2em;
+    color: #fff;
+}
+
+#singUp {
+    height: 4em;
+    width: 15%;
+    border: 1px solid #c0c0c0;
+}
+
+/* nav 导航栏 */
+
+.nav {
+    text-align: center;
+    padding: 2%;
+    height: 600px;
+}
+
+.nav > p:nth-child(2) {
+    font-size: 2em;
+    width: 40%;
+    margin: 1em auto;
+}
+
+.ico-container {
+    width: 70%;
+    height: 50%;
+    margin: 2em auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ico {
+    flex: 1 0 400px;
+    margin-right: 3em;
+    margin-top: 2em;
+    margin-bottom: 4em;
+}
+
+.ico img {
+    float: left;
+    margin-right: 2em;
+}
+
+.ico div {
+    text-align: left;
+    overflow: hidden;
+    
+}
+
+.ico div p {
+    margin-top: 0;
+}
+
+.ico div p:first-child {
+    font-weight: bold;
+}
+
+/* introduce 介绍 */
+
+.introduce {
+    background: url("前端学院设计图_0002s_0002s_0004_Background.png") no-repeat,
+    url("前端学院设计图_0002s_0002s_0005_图层-2.png") no-repeat;
+    height: 800px;
+    padding-left: 10%;
+    color: #fff;
+    overflow: hidden;
+}
+
+.introduce .left {
+    float: left;
+    width: 40%;
+    height: 60%;
+    margin-top: 15%;
+}
+
+.introduce .left div:first-child {
+    width: 60%;
+    margin-bottom: 5%;
+}
+
+.introduce .left div:first-child p:first-child {
+    font-size: 2.2em;
+}
+
+.introduce .left button{
+    width: 40%;
+    height: 4em;
+    margin-right: 2em;
+}
+
+.introduce .left button:nth-of-type(2) {
+    background: transparent;
+    color: #fff;
+}
+
+.introduce .right {
+    float: right;
+    border: 1px solid rgba(217, 217, 217, .2);
+    /* border-bottom: none; */
+    border-top-left-radius: 2em;
+    /* border-top-right-radius: 1em; */
+    border-bottom-left-radius: 2em;
+    width: 630px;
+    height: 580px;
+    margin-top: 8%;
+}
+
+.introduce .right img {
+    margin: 19px 0 19px 45px;
+}
+
+
+/* try 样式 */
+
+.try {
+    width: 80%;
+    height: 400px;
+    padding: 2em 0;
+    margin: 0 auto;
+    border-top: 1px solid rgba(217, 217, 217, .2);
+    overflow: hidden;
+}
+
+.try h2, .try h3 {
+    text-align: center;
+}
+
+.try .middle, .try .left, .try .right {
+    float: left;
+}
+
+.try .middle {
+    width: 100%;
+    height: 50%;
+    /* padding: 0 200px; */
+}
+
+.try .middle .middle-wrap {
+    margin: 0 480px 0 480px;
+}
+
+.try .left {
+    width: 300px;
+    margin-left: -100%;
+}
+
+.try .right {
+    width: 300px;
+    margin-left: -300px;
+}
+
+/* artical-container 样式 */
+
+.artical-containers {
+    width: 80%;
+    margin: 0 auto;
+    border-top: 1px solid rgba(217, 217, 217, .2);
+    overflow: hidden;
+}
+
+.artical-containers .artical-container {
+    overflow: hidden;
+    margin: 2em auto;
+}
+
+.artical-container:nth-of-type(1) img {
+    float: left;
+    margin-right: 6em;
+    width: 575px;
+    height: 356px;
+}
+
+.artical-container .artical {
+    overflow: hidden;
+    width: 40%;
+    margin: 4em auto;
+}
+
+.artical-container:nth-of-type(2) img {
+    float: right;
+    margin-left: 6em;
+    width: 575px;
+    height: 356px;
+}
+
+/* teacher 样式  */
+
+.teachers {
+    width: 80%;
+    height: 1000px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(217, 217, 217, .2);
+    text-align: center;
+}
+
+.teachers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.teachers-container .teacher:nth-of-type(1) {
+    background: url("前端学院设计图_0005s_0001s_0000s_0002_张思远大.png") no-repeat;
+}
+
+.teachers-container .teacher:nth-of-type(2) {
+    background: url("前端学院设计图_0005s_0001s_0001s_0000_2.png") no-repeat;
+}
+
+.teachers-container .teacher:nth-of-type(3) {
+    background: url("前端学院设计图_0005s_0001s_0002s_0000_3.png") no-repeat;
+}
+
+.teachers-container .teacher:nth-of-type(4) {
+    background: url("前端学院设计图_0005s_0001s_0003s_0000_沈大师大_meitu_3.png") no-repeat;
+}
+
+.teachers-container .teacher {
+    height: 408px;
+    flex: 0 0 475px;
+    padding: 0;
+    margin: 1em;
+}
+
+.teacherLink {
+    background: url("前端学院设计图_0005s_0001s_0000s_0003_Background.png") no-repeat center/cover;
+    margin: 0 auto;
+    height: 100%;
+    color: #fff;
+    padding-top: 6em;
+    opacity: 0;
+}
+
+.teacherLink img {
+    margin-left: 1em;
+}
+
+.teacherLink:hover {
+    opacity: .6;
+}
+
+
+/* login 样式 */
+
+.login {
+    width: 80%;
+    height: 500px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 2em;
+    text-align: center;
+    border-top: 1px solid rgba(217, 217, 217, .2);
+}
+
+.login .left {
+    float: left;
+    width: 38%;
+    border: 1px solid rgba(217, 217, 217, .2);
+    margin-right: 8em;
+}
+
+.login .left .container {
+    border: 1px solid rgba(217, 217, 217, .2);
+}
+
+.login .left .container input {
+    height: 4em;
+    margin: 1em;
+    width: 25em;
+}
+
+.login .left .container textarea {
+    height: 6em;
+    padding: 0;
+    margin: 1em;
+    width: 25em;
+}
+
+.login .left .container button {
+    margin: 1em 1em 2em 1em;
+    width: 25em;
+    height: 4em;
+    color: #fff;
+    background: #000;
+}
+
+.login .right {
+    overflow: hidden;
+    text-align: left;
+    margin: 2em 0;
+    width: 38%;
+}
+
+.login .right div {
+    font-weight: bold;
+    margin-top: 2em;
+}
+
+.login .right div img {
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+
+/* footer 样式 */
+
+footer {
+    width: 80%;
+    height: 300px;
+    margin: 0 auto;
+    background: #000;
+    padding-top: 2em;
+    color: #fff;
+}
+
+footer dl {
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+    margin: 2em 4em;
+}
+
+footer dd {
+    margin: 1em 0;
+    color: rgba(255, 255, 255, .4);
+}
+
+footer dd a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, .4);
+}
+
+footer dd a img {
+    margin-left: 1em;
+}
