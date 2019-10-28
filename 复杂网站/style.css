@@ -1,0 +1,452 @@
+*, *::after, *::before {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+/* 左中右整体flex布局 */
+body {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.ico {
+    width: 100px;
+    flex: 0 0 100px;
+}
+
+.nav {
+    flex: 0 0 300px;
+}
+
+.main {
+    flex: 1 1 600px;
+}
+/* ###################### */
+
+/* 右侧空白区域顶栏 main top */
+.main .top {
+    overflow: hidden;
+    height: 100px;
+}
+.main .top > div:nth-child(1) {
+    float: left;
+    font-size: 1.5em;
+    line-height: 100px;
+    margin-left: 1em;
+}
+
+.main .top > div:nth-child(2) {
+    float: right;
+    overflow: hidden;
+}
+
+.main .top > div:nth-child(2) img {
+    margin-top: 1em;
+    float: left;
+}
+
+.main .top > div:nth-child(2) .state {
+    position: relative;
+    right: 1em;
+    top: 2em;
+    padding: .2em;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.main .top > div:nth-child(2) .name {
+    overflow: hidden;
+    padding: 1.5em 1em 1em 0;
+}
+
+.main .top > div:nth-child(2) p {
+    margin: 0;
+}
+
+.main .top > div:nth-child(2) p:nth-of-type(1) {
+    color: rgba(74, 134, 232, .8);
+}
+
+.main .top > div:nth-child(2) p:nth-of-type(2) {
+   opacity: .5;
+   font-size: .8em;
+}
+
+/* ###################### */
+
+/* 右侧空白区域下面  main bottom */
+.main > .bottom {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.bottom > .main-left {
+    flex: 0 0 400px;
+}
+
+.bottom > .main-right {
+    flex: 1 1 200px;
+}
+
+.main > .bottom {
+    border: 1px solid rgba(217, 217, 217, .8);
+}
+
+.bottom .main-left {
+    border: 1px solid rgba(217, 217, 217, .8);
+}
+
+.bottom .main-right > div {
+    border-bottom: 1px solid rgba(217, 217, 217, .8);
+}
+
+/* 头像 */
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+/* ###################### */
+
+/* 右侧空白区域下面的左半部分 mamin bottom main-left */
+.main-left .main-left-header {
+    border: .1px solid rgba(217, 217, 217, .8);
+    height: 80px;
+}
+
+.main-left #search {
+    width: 350px;
+    height: 50px;
+    margin: 15px auto;
+    border: 1px solid rgba(217, 217, 217, .8);
+    overflow: hidden;
+}
+
+#search input {
+    border: none;
+    margin-left: 8px;
+    width: 250px;
+    line-height: 50px;
+}
+
+#search img {
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
+    margin-top: 17px;
+    float: right;
+}
+
+.main-left .person {
+    border: 1px solid rgba(217, 217, 217, .8);
+    padding: 1em 1em 1em 2em;
+    height: 150px;
+}
+
+.main-left .person:nth-of-type(2) {
+    border-left: 2px solid rgba(74, 134, 232, .8);
+}
+
+.main-left .name {
+    display: inline-block;
+    margin-left: 1em;
+}
+.main-left .personal-profile > span {
+    float: right;
+    margin-top: 1em;
+    font-weight: bold;
+    opacity: 0.2;
+}
+.main-left .name p:nth-of-type(1) {
+    margin: 0;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.main-left .name p:nth-of-type(1) span {
+    float: right;
+    font-weight: normal;
+}
+
+.main-left .name p:nth-of-type(2) {
+    margin: 0;
+    font-size: 0.8em;
+    font-weight: bold;
+    opacity: 0.2;
+}
+
+.messageContainer {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.messageContainer .message {
+    flex: 1 1;
+    font-size: 0.6em;
+    opacity: 0.6;
+    margin-right: 1em;
+}
+
+.messageContainer .messageNumber{
+    flex: 0 0;
+}
+
+.messageContainer .messageNumber span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color:rgba(74, 134, 232, .8);
+    text-align: center;
+    color: #fff;
+}
+/* ###################### */
+
+/* 空白区域右半部分 margin-right */
+
+.main-right-header {
+    height: 81px;
+    overflow: hidden;
+}
+
+.main-right-header #personName {
+    float: left;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#personName  span {
+    color: #0f0;
+}
+
+.main-right-header #operation {
+    float: right;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+.main-right-header #page {
+    float: right;
+}
+
+#page #pageNumber {
+    float: left;
+    margin: 0 10px;
+    margin-top: 15px;
+}
+
+#page #pageOperation {
+    float: right;
+    margin-right: 20px;
+    margin-top: 15px;
+ }
+
+
+ /* 空白区域的右边的下半边  oldmessage... */
+ .main-right > div {
+     padding: 1em 2em;
+ }
+
+ .main-right .oldMessage img{
+    float: left;
+    margin-top: 1em;
+    margin-right: 1em;
+ }
+
+ .main-right .oldMessage .message {
+     overflow: hidden;
+ }
+
+ .main-right .oldMessage .message p {
+    opacity: .6;
+}
+
+ .oldMessage .message p:nth-of-type(1) {
+     font-weight: bold;
+ }
+
+ .oldMessage .message p:nth-of-type(1) span {
+     opacity: .3;
+     margin-left: .2em;
+ }
+
+ .lastMessage .me {
+     width: 100%;
+     height: 20px;
+     border: 1px solid rgba(217, 217, 217, .8);
+ }
+ .lastMessage .me img {
+     margin: 0 .5em;
+     width: 20px;
+     height: 20px;
+     opacity: .2;
+     
+ }
+ .lastMessage .me input {
+     border: none;
+     border-right: 1px solid rgba(217, 217, 217, .8);
+     width: calc(100% - 36px);
+ }
+/* 信息图片处理 messagePicture*/
+.messagePicture {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.messagePicture img {
+    width: 156px;
+    height: 100px;
+}
+.messagePicture .above1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 156px;
+    height: 100px;
+    margin-top: 1em;
+    margin-right: 1em;
+    background:
+    url("12_15_0001s_0003s_0004s_0001s_0000s_0000s_0000_Open-icon.png") no-repeat center,
+    url("12_15_0001s_0003s_0004s_0001s_0000s_0000s_0001_Base.png") no-repeat center, 
+    url("12_15_0001s_0003s_0004s_0001s_0000s_0001_Pic.png") no-repeat center/cover;
+    opacity: 0;
+}
+.messagePicture .above2 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 156px;
+    height: 100px;
+    margin-top: 1em;
+    margin-right: 1em;
+    background:
+    url("12_15_0001s_0003s_0004s_0001s_0000s_0000s_0000_Open-icon.png") no-repeat center,
+    url("12_15_0001s_0003s_0004s_0001s_0000s_0000s_0001_Base.png") no-repeat center, 
+    url("12_15_0001s_0003s_0004s_0001s_0000s_0001_Pic.png") no-repeat center/cover;
+    opacity: 0;
+}
+
+.messagePicture .above1:hover {
+    opacity: .7;
+}
+
+.messagePicture .above2:hover {
+    opacity: .5;
+}
+
+ /* 导航栏样式 */
+
+.nav {
+    display: flex;
+    flex-flow: column nowrap;
+    background: #666;
+} 
+
+.nav > div {
+    flex: 0 0 300px;
+    padding: 2em 1.5em;
+}
+
+.nav dd {
+    margin: 1em 0;
+    width: 100%;
+    color: #fff;
+    opacity: .8;
+}
+
+.nav dt {
+    width: 100%;
+    color: #fff;
+    opacity: .4;
+}
+.porducts {
+    border-top: 1px solid rgba(217, 217, 217, .8);
+    border-bottom: 1px solid rgba(217, 217, 217, .8);
+}
+
+.nav .nav-bottom {
+    position: fixed;
+    left: 120px;
+    bottom: 10px;
+    width: 280px;
+    padding: 0 1.5em;
+    /* overflow: hidden; */
+}
+
+.nav-bottom p:nth-of-type(1) {
+    float: left;
+}
+
+.nav-bottom p:nth-of-type(2) {
+    float: right;
+}
+
+.nav-bottom #schedule {
+    clear: both;
+    /* margin: 1em 1em; */
+    width: 100%;
+    height: 4px;
+    border-radius: 1px;
+    background: rgba(217, 217, 217, .2);
+}
+
+#schedule #used {
+    display: inline-block;
+    border-radius: 1px;
+    background: linear-gradient(to right, #B533FF, #FE83FE);
+    width: calc(580 / 3200 * 100%);
+    height: 100%;
+}
+
+.nav img, .nav .message, .nav .waring {
+    float: right;
+}
+
+.nav .message {
+    display: table;
+    border-radius: 50%;
+    width: 30px;
+    height: 20px;
+    background: rgba(74, 134, 232, .8);
+    text-align: center;
+}
+
+.nav .message span {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.nav .waring {
+    display: table;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background: #f00;
+}
+
+.nav .waring span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* 左侧图标栏 */
+.ico {
+    padding: 1em 1em;
+    background: #434343;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.ico > div {
+    flex: 0 0 100px;
+}
+
+.ico #ico-bottom {
+    position: fixed;
+    left: 30px;
+    bottom: 10px;
+}
+
+
