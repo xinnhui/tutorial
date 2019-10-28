@@ -103,7 +103,11 @@ body {
 }
 
 .bottom .main-right > div {
-    border-bottom: 1px solid rgba(217, 217, 217, .8);
+    border-top: 1px solid rgba(217, 217, 217, .8);
+}
+
+.bottom .main-right .lastMessage {
+    border-top: 1px solid rgba(74, 134, 232, .8);
 }
 
 /* 头像 */
@@ -122,24 +126,27 @@ body {
 
 .main-left #search {
     width: 350px;
-    height: 50px;
-    margin: 15px auto;
+    height: 30px;
+    margin: 25px auto;
     border: 1px solid rgba(217, 217, 217, .8);
+    border-left-width: 3px;
+    border-top-width: 2px;
     overflow: hidden;
 }
 
 #search input {
     border: none;
     margin-left: 8px;
-    width: 250px;
-    line-height: 50px;
+    width: 300px;
+    line-height: 30px;
+    outline: none;
 }
 
 #search img {
     width: 20px;
     height: 15px;
     margin-right: 8px;
-    margin-top: 17px;
+    margin-top: 10px;
     float: right;
 }
 
@@ -167,6 +174,10 @@ body {
     margin: 0;
     font-weight: bold;
     overflow: hidden;
+}
+/* 未读消息人的名字 */
+.main-left .name .missMessage {
+    color: rgba(74, 134, 232, .8);
 }
 
 .main-left .name p:nth-of-type(1) span {
@@ -249,14 +260,35 @@ body {
 
  /* 空白区域的右边的下半边  oldmessage... */
  .main-right > div {
+     position: relative;
      padding: 1em 2em;
  }
-
+.main-right .messageDate {
+    position: absolute;
+    top: -0.8em;
+    left: 45%;
+    padding: 0 1em;
+    /* margin: 0 auto; */
+    /* text-align: center; */
+    background: #fff;
+    z-index: 1;
+}
  .main-right .oldMessage img{
     float: left;
     margin-top: 1em;
     margin-right: 1em;
  }
+
+ .main-right .messageDate p {
+     margin: 0;
+     opacity: .6;
+ }
+
+ .main-right .messageDate #newMessage {
+    margin: 0;
+    opacity: 1;
+    color: rgba(74, 134, 232, .8);
+ } 
 
  .main-right .oldMessage .message {
      overflow: hidden;
@@ -345,7 +377,7 @@ body {
 .nav {
     display: flex;
     flex-flow: column nowrap;
-    background: #666;
+    background: #222c3c;
 } 
 
 .nav > div {
@@ -379,6 +411,12 @@ body {
     /* overflow: hidden; */
 }
 
+.nav-bottom p {
+    color: #fff;
+    opacity: .4;
+    font-size: .6em;
+}
+
 .nav-bottom p:nth-of-type(1) {
     float: left;
 }
@@ -406,6 +444,11 @@ body {
 
 .nav img, .nav .message, .nav .waring {
     float: right;
+}
+
+.nav img.fixedIco {
+    float: none;
+    margin-right: .6em;
 }
 
 .nav .message {
@@ -440,7 +483,7 @@ body {
 /* 左侧图标栏 */
 .ico {
     padding: 1em 1em;
-    background: #434343;
+    background: #1d2531;
     /* height: 120%; */
     /* flex-flow: column nowrap; */
 }
