@@ -7,6 +7,7 @@
 body {
     display: flex;
     flex-flow: row nowrap;
+    margin: 0;
 }
 
 .ico {
@@ -27,6 +28,11 @@ body {
 .main .top {
     overflow: hidden;
     height: 100px;
+    position: sticky;
+    top: 1px;
+    z-index: 1;
+    border-bottom: 1px solid rgba(217, 217, 217, .8);
+    background: #fff;
 }
 .main .top > div:nth-child(1) {
     float: left;
@@ -435,18 +441,46 @@ body {
 .ico {
     padding: 1em 1em;
     background: #434343;
-    display: flex;
-    flex-flow: column nowrap;
+    /* height: 120%; */
+    /* flex-flow: column nowrap; */
 }
 
-.ico > div {
-    flex: 0 0 100px;
+#ico-1,
+#ico-2,
+#ico-3,
+#ico-4,
+#ico-bottom
+ {
+    position: fixed;
 }
 
-.ico #ico-bottom {
+#ico-1 {
+    top: 5%;
+}
+
+#ico-2 {
+    top: 15%;
+}
+
+#ico-3 {
+    top: 25%;
+}
+
+#ico-4 {
+    top: 35%;
+}
+
+#ico-bottom {
+    bottom: 1%;
+    left: 2em;
+}
+
+
+
+/* .ico #ico-bottom {
     position: fixed;
     left: 30px;
     bottom: 10px;
-}
+} */
 
 
