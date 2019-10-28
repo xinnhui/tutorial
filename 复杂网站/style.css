@@ -475,7 +475,12 @@ body {
     left: 2em;
 }
 
-
+#ico-1 span {
+    position: absolute;
+    left: -1em;
+    top: .3em;
+    color: rgba(74, 134, 232, .8);
+}
 
 /* .ico #ico-bottom {
     position: fixed;
