@@ -29,7 +29,7 @@ body {
     overflow: hidden;
     height: 100px;
     position: sticky;
-    top: 1px;
+    top: 0;
     z-index: 1;
     border-bottom: 1px solid rgba(217, 217, 217, .8);
     background: #fff;
