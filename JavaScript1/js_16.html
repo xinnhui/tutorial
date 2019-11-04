@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <script>
+        //  function add() {
+            
+        // }
+        //   function minus() {
+        //     document.getElementById("result").innerHTML = x - y;
+        // }
+        // function times() {
+        //     document.getElementById("result").innerHTML = x * y;
+        // }
+        // function divide() {
+        //     document.getElementById("result").innerHTML = x / y;
+        // }
+        var firstNumber = Number(document.getElementById("first-number").value);
+        var secondNumber = Number(document.getElementById("second-number").value);
+
+        if(isNaN(firstNumber)){
+                console.log(" The firstNumber should be a number");
+             
+        }
+        if(isNaN(secondNumber)){
+                console.log(" The secondNumber should be a number");
+                return;
+        }
+        document.getElementById("add-btn").onclick = function() {
+            var x = parseInt(document.getElementById("first-number").value);
+            var y = parseInt(document.getElementById("second-number").value);
+            document.getElementById("result").innerHTML =(x + y);
+        }
+        document.getElementById("minus-btn").onclick = function() {
+            var x = parseInt(document.getElementById("first-number").value);
+            var y = parseInt(document.getElementById("second-number").value);
+            document.getElementById("result").innerHTML =(x - y);
+        }
+        document.getElementById("times-btn").onclick = function() {
+            var x = parseInt(document.getElementById("first-number").value);
+            var y = parseInt(document.getElementById("second-number").value);
+            document.getElementById("result").innerHTML =(x * y);
+        }
+        document.getElementById("divide-btn").onclick = function() {
+            if (secondNumber === 0) {
+                console.log("Divisor cannot be zero");
+                return;
+            }
+            var x = parseInt(document.getElementById("first-number").value);
+            var y = parseInt(document.getElementById("second-number").value);
+            document.getElementById("result").innerHTML =(x / y);
+        }
+    </script>
+</body>
+</html>

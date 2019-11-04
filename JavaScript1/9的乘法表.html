@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="htf-8">
+    <title>9的乘法表</title>
+    <body>
+        <table>
+            <!-- <tr>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+            </tr> -->
+        </table>
+
+        <script>
+            for(var i = 1; i<=9; i++){
+                var table =document.querySelector("table");
+                var tr = document.createElement("tr");
+                table.appendChild(tr);
+                var result ="";
+                for(var j=1; j<=i; j++){
+                   var td = document.createElement("td");
+                    tr.appendChild(td);
+                    td.textContent=j.toString()+"*"+i.toString() + "=" +j*i+" ";
+                    result +=j.toString()+"*"+i.toString() + "=" +j*i+" ";
+                }
+                console.log(result);
+            }    
+        </script>
+    </body>
+</html>

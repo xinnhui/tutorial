@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+        <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+        <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+
+function dec2bin(decNumber,binBit) {
+    // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+        var bin="";
+    if(decNumber < 0 || isNaN(decNumber) || isNaN(decNumber)){
+        return flase;
+       
+    }else if(decNumber > 0) {
+        while(decNumber > 0){
+            bin = decNumber % 2 + bin;
+            decNumber = (decNumber - decNumber % 2) / 2;
+        } 
+    }else{
+        bin ="0";
+    }
+    // return bin;
+    if(binBit > bin.length){
+        var x = binBit - bin.length;
+        while( x>0 ){
+            bin = 0 + bin;
+            x--;
+        }
+    }
+  
+    document.getElementById("result").textContent= bin;
+}
+
+// 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+// Some coding
+
+var btn = document.getElementById("trans-btn");
+btn.onclick = function (){
+    var decNumber =Number(document.getElementById("dec-number").value);
+    var binBit = Number(document.getElementById("bin-bit").value);
+    alert(decNumber);
+    alert(typeof(decNumber));
+    dec2bin(decNumber,binBit);
+  
+};
+    </script>
+</body>
+</html>

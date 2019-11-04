@@ -1,0 +1,25 @@
+* {
+    font-weight: bold;
+}
+
+article {
+    overflow: hidden;
+    width: 700px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-weight: bolder;
+}
+dd {
+    text-indent: -2.5em;
+}
+dd::after {
+    content: "";
+    display: block;
+    height: 1em;
+}
+
+#time {
+    float: right;
+}

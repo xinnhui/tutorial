@@ -1,0 +1,49 @@
+* {
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+#time {
+    float: right;
+}
+
+article {
+    overflow: hidden;
+    width: 700px;
+    margin: 0 auto;
+}
+
+/* dd {
+    text-indent: -1em;
+} */
+dd::after {
+    content: "";
+    display: block;
+    height: 1em;
+}
+
+/* 浮动样式 */
+
+h1 {
+    float: left;
+    border: 1px solid #000;
+    margin-top: 0;
+    margin-right: .5em;
+    /* margin-left: 20%; */
+    margin-bottom: -3000px;
+    padding-bottom: 3000px;
+    padding-top: 2em;
+    width: 10%;
+    height: 16em;
+    background: #00f;
+    text-align: center;
+    font-weight: 700;
+    font-size: 3em;
+    color: white;
+}
+
+.content {
+    float: left;
+    width: 80%;
+    height: 50em;
+}
