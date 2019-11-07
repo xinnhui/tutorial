@@ -1,6 +1,6 @@
 var nowTime = document.getElementById("time");
 var date = new Date();
-hello(date.getHours);
+hello(date.getHours());
 function hello (hours){
     if (hours > 6 && hours < 12) {
         nowTime.textContent="上午好!";
