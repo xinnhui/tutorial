@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>css sprite 实现gif效果</title>
+    </head>
+    <body>
+        <div id="imgGif" style="height: 480px; width: 480px; background: url('erik_ce204002.jpg') no-repeat;"></div>
+        <script>
+              var positionY = 0;
+              var i = 0;
+              var p = 1;
+              var imgGif = document.getElementById("imgGif");
+            function changePosition(){
+                if (p){
+                    console.log(p);
+                    positionY = -480 * i + "px";
+                    imgGif.style.backgroundPositionY = positionY;
+                    i++;
+                    if(i === 17){
+                        p = 0;
+                    }
+                }else{
+                    i--;
+                    positionY = -480 * i + "px";
+                    imgGif.style.backgroundPositionY = positionY;
+                    if(i === 0){
+                        p = 1;
+                    }
+                }
+               
+            }    
+            setInterval(changePosition,100);
+        </script>
+    </body>
+</html>
