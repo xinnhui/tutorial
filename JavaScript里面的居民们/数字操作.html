@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>练习数字</title>
+    </head>
+    <body>
+        <div>
+            <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+            <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+        </div>
+        <div id="btn">
+            <button id="btn1">判断当前选中的输入框输入内容是否为数字</button>
+            <button id="btn2">把 A 四舍五入为 B 个小数位数的数字</button>
+            <button id="btn3">当前选中数字的绝对值</button>
+            <button id="btn4">对当前选中的数字进行上舍入</button>
+            <button id="btn5">对当前选中的数字进行下舍入</button>
+            <button id="btn6">把当前选中的数字四舍五入为最接近的整数</button>
+            <button id="btn7">返回 A 和 B 中的最高值</button>
+            <button id="btn8">返回 A 和 B 中的最低值</button>        
+        </div>
+        <p id="result"></p>
+        <script>
+            var btn = document.getElementById("btn");
+            var radioA = document.getElementById("radio-a");
+            var numA = document.getElementById("num-a");
+            var radioB = document.getElementById("radio-b");
+            var numB = document.getElementById("num-b");
+            var result = document.getElementById("result");
+            btn.onclick = function (e) {
+                var e = e || window.event;
+                var id = e.target.id || e.srcElement.id
+                function checkedNumber(x) {
+                        var reg = /^[0-9]+.?[0-9]*$/;
+                        if (!reg.test(x)) {
+                            console.log(x + "请输入数字");
+                        }
+                    }
+                switch (id){
+                    case "btn1":
+                        var reg = /^[0-9]+.?[0-9]*$/;
+                        if (radioA.checked && numA.Value != ""){
+                            console.log(reg.test(numA.value));
+                            result.textContent = reg.test(numA.value);
+                        }else if (radioB.checked && numB.Value != "") {
+                            console.log(isNaN(numB.value));
+                            result.textContent = reg.test(numB.value);
+                        }else {
+                            console.log("请选中元素且内容不能为空");
+                            result.textContent = "请选中元素且内容不能为空";
+                        }
+                        break;
+                    
+                    case "btn2":  
+                        checkedNumber(numA.value);
+                        checkedNumber(numB.value);
+                        console.log(Number(numA.value).toFixed(Number(numB.value)));
+                        result.textContent = Number(numA.value).toFixed(Number(numB.value));
+                        break;
+                    case "btn3":
+                           
+                           
+                    if (radioA.checked && numA.Value != ""){
+                            checkedNumber(numA.value);
+                            result.textContent = Math.abs(numA.value);
+                        }else if (radioB.checked && numB.Value != "") {
+                            checkedNumber(numB.value);
+                            result.textContent = Math.abs(numB.value);
+                        }else {
+                            console.log("请选中元素且内容不能为空");
+                            result.textContent = "请选中元素且内容不能为空";
+                        }
+                        break;
+                    case "btn4":
+                    if (radioA.checked && numA.Value != ""){
+                            checkedNumber(numA.value);
+                            result.textContent = Math.ceil(numA.value);
+                        }else if (radioB.checked && numB.Value != "") {
+                            checkedNumber(numB.value);
+                            result.textContent = Math.ceil(numB.value);
+                        }else {
+                            console.log("请选中元素且内容不能为空");
+                            result.textContent = "请选中元素且内容不能为空";
+                        }
+                        break;
+                    case "btn5":
+                    if (radioA.checked && numA.Value != ""){
+                            checkedNumber(numA.value);
+                            result.textContent = Math.floor(numA.value);
+                        }else if (radioB.checked && numB.Value != "") {
+                            checkedNumber(numB.value);
+                            result.textContent = Math.floor(numB.value);
+                        }else {
+                            console.log("请选中元素且内容不能为空");
+                            result.textContent = "请选中元素且内容不能为空";
+                        }
+                        break;
+                    case "btn6":
+                    if (radioA.checked && numA.Value != ""){
+                            checkedNumber(numA.value);
+                            result.textContent = Math.round(numA.value);
+                        }else if (radioB.checked && numB.Value != "") {
+                            checkedNumber(numB.value);
+                            result.textContent = Math.round(numB.value);
+                        }else {
+                            console.log("请选中元素且内容不能为空");
+                            result.textContent = "请选中元素且内容不能为空";
+                        }
+                        break;
+                    case "btn7":  
+                        checkedNumber(numA.value);
+                        checkedNumber(numB.value);
+                        console.log(Math.max(numA.value, numB.value));
+                        result.textContent =Math.max(numA.value, numB.value);
+                        break;
+                    case "btn8":  
+                        checkedNumber(numA.value);
+                        checkedNumber(numB.value);
+                        console.log(Math.min(numA.value, numB.value));
+                        result.textContent = Math.min(numA.value, numB.value);
+                        break;
+
+
+                }
+            }
+        </script>
+    </body>
+</html>
