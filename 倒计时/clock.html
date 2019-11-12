@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>时钟</title>
+    </head>
+   <body>
+       <p id="clock"></p>
+
+       <script>
+           var p = document.getElementById("clock");
+        
+           //获取年份
+           function getFullYear(date) {
+               return date.getFullYear();
+           }
+           //获取星期
+           function getWeek(date,type) {
+               if(type === "1" || type === 1){
+                var weeks = new Array();
+                weeks[0] ="Sunday";
+                weeks[1] ="Monday";
+                weeks[2] ="Tuesday";
+                weeks[3] ="Wednesday";
+                weeks[4] ="Thursday";
+                weeks[5] ="Friday";
+                weeks[6] ="Saturday";
+                return weeks[date.getDay()];
+               }else{
+                    var weeksChinese = new Array();
+                    weeksChinese[0] ="星期日";
+                    weeksChinese[1] ="星期一";
+                    weeksChinese[2] ="星期二";
+                    weeksChinese[3] ="星期三";
+                    weeksChinese[4] ="星期四";
+                    weeksChinese[5] ="星期五";
+                    weeksChinese[6] ="星期六";
+                    return weeksChinese[date.getDay()];
+               }
+            
+           } 
+           // 获取上午和下午标志
+           function myTimeFlag(date) {
+               var hour = date.getHours();
+               if (hour > 12) {
+                   return "PM"
+               }else {
+                return "AM";
+               }
+           }
+           //获取时刻
+           function getMyHour(date) {
+              var hour = date.getHours();
+              if (hour > 12) {
+                var hourX = hour % 12;
+                return hourX;
+              }
+              return hour;
+           }
+           //补零
+           function zeroPading(Number) {
+                if (Number < 10) {
+                    return "0" + Number;
+                }
+                return Number;
+           }
+
+           //格式化 
+           function format(date,format,type) {
+               var formatArr = ["YYYY", "MM", "DD", "WW", "HH", "mm", "ss"];
+               var dateArr = [];
+               dateArr[0] = date.getFullYear();
+               dateArr[1] = zeroPading(date.getMonth() + 1);
+               dateArr[2] = zeroPading(date.getDate());
+               dateArr[3] = getWeek(date,type);
+               dateArr[4] = zeroPading(getMyHour(date));
+               dateArr[5] = date.getMinutes();
+               dateArr[6] = date.getSeconds();
+               for (var i in dateArr){
+                   format = format.replace(formatArr[i], dateArr[i]);
+               }
+               var clock = document.getElementById("clock")
+               clock.textContent = format  +" "+ myTimeFlag(date);
+              
+              
+           }
+           //执行格式化
+           function print(format,type) {
+            var myDate = new Date();
+               format(myDate,format,type);
+           }
+           setInterval(function() {
+            format(new Date(),"YYYY年MM月DD日 WW HH:mm:ss",2)
+           }, 500);
+         
+       </script>
+   </body>
+</html>

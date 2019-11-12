@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>时钟</title>
+    </head>
+    <body>
+        <select id="year-select">
+            <!-- <option value="2000" >2000</option>
+            <option value="2001"   id="xx">2001</option>
+            <option value="2002">2002</option>
+            ……
+            <option value="2032">2002</option> -->
+        </select>
+        
+        <select id="month-select">
+            <!-- <option value="1">1</option>
+            <option value="2">2</option>
+            ……
+            <option value="12">12</option> -->
+        </select>
+        
+        <select id="day-select">
+            <!-- <option value="1">1</option>
+            <option value="2">2</option>
+            ……
+            <option value="31">31</option> -->
+        </select>
+        
+        <select id="hour-select">
+            <!-- <option value="0">00</option>
+            <option value="1">01</option>        
+            ……
+            <option value="23">23</option> -->
+        </select>
+        
+        <select id="minite-select">
+            <!-- <option value="0">0</option>
+            <option value="1">1</option>
+            ……
+            <option>59</option> -->
+        </select>
+        
+        <select id="second-select">
+            <!-- <option value="0">0</option>
+            <option value="1">1</option>
+            ……
+            <option>59</option> -->
+        </select>
+        
+        <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+   
+        <script>
+            var year = document.getElementById("year-select");
+            var month = document.getElementById("month-select");
+            var day = document.getElementById("day-select");
+            var hour = document.getElementById("hour-select");
+            var minite = document.getElementById("minite-select");
+            var second = document.getElementById("second-select");
+            var result = document.getElementById("result-wrapper");
+            var selectDate = new Date();
+            selectDate.setUTCFullYear(2000);
+            selectDate.setUTCMonth(1);
+            selectDate.setUTCDate(1);
+            selectDate.setUTCHours(0);
+            selectDate.setUTCMinutes(0);
+            selectDate.setUTCSeconds(0);
+            //初始化年份
+            for (var i = 2000; i < 2033; i++) {
+                var option = document.createElement("option");
+                option.textContent = i;
+                option.value =i;
+                year.appendChild(option);
+            }
+            //初始化月份
+            for (var i = 1; i < 13; i++) {
+                var option = document.createElement("option");
+                option.textContent = i;
+                option.value =i;
+                month.appendChild(option);
+            }
+            //初始化日期
+            for (var i = 1; i < 32; i++) {
+                var option = document.createElement("option");
+                option.textContent = i;
+                option.value =i;
+                day.appendChild(option);
+            }
+            //初始化小时
+            for (var i = 0; i < 24; i++) {
+                var option = document.createElement("option");
+                option.textContent = i;
+                option.value =i;
+                hour.appendChild(option);
+            }
+            //初始化分钟
+            for (var i = 0; i < 60; i++) {
+                var option = document.createElement("option");
+                option.textContent = i;
+                option.value =i;
+                minite.appendChild(option);
+            }
+            //初始化秒
+            for (var i = 0; i < 60; i++) {
+                var option = document.createElement("option");
+                option.textContent = i;
+                option.value =i;
+                second.appendChild(option);
+            }
+            //初始差值
+            timeDifference();
+            //设置年份
+            year.onchange = function (e) {
+                var index=e.target.selectedIndex;
+                // console.log(e.target);
+                var selectOption=e.target.children[index];
+                selectDate.setUTCFullYear(Number(selectOption.value));
+                timeDifference();
+            }
+            //设置月份
+            month.onchange = function (e) {
+                // var child = day.getElementsByTagName("option");
+                // day.innerHTML = "";
+                var index=e.target.selectedIndex;
+                // console.log(selectDate.getUTCFullYear()+ "年份");
+                var selectOption=e.target.children[index];
+                selectDate.setUTCMonth(Number(selectOption.value));
+                //初始化天数
+                //判断是否闰年分别设置2月
+                if (selectDate.getUTCFullYear() % 400 === 0 || selectDate.getUTCFullYear() % 4 === 0) {
+                    if (Number(selectOption.value) === 2){
+                        for (var i = 1; i < 30; i++) {
+                            var option = document.createElement("option");
+                            option.textContent = i;
+                            option.value =i;
+                            day.appendChild(option);
+                        }
+                    }
+                }else {
+                    if (Number(selectOption.value) === 2){
+                        for (var i = 1; i < 29; i++) {
+                            var option = document.createElement("option");
+                            option.textContent = i;
+                            option.value =i;
+                            day.appendChild(option);
+                        }
+                    }
+                  
+                }
+                //设置其他月份
+                var day31 =[1, 3, 5, 7, 8 ,10, 12];
+                var day30 =[4, 6, 9, 11];
+                if (day31.indexOf(selectOption.value) !== -1){
+                    console.log(typeof(selectOption.value));
+                    console.log(day31.indexOf(Number(selectOption.value)) !== -1);
+                    for (var i = 1; i < 32; i++) {
+                            var option = document.createElement("option");
+                            option.textContent = i;
+                            option.value =i;
+                            day.appendChild(option);
+                        }
+                }else if (day30.indexOf(Number(selectOption.value)) !== -1) {
+                    for (var i = 1; i < 31; i++) {
+                            var option = document.createElement("option");
+                            option.textContent = i;
+                            option.value =i;
+                            day.appendChild(option);
+                        }
+                }
+                timeDifference();
+            }
+            //设置日期
+            day.onchange = function(e) {
+                var index=e.target.selectedIndex;
+                // console.log(e.target);
+                var selectOption=e.target.children[index];
+                selectDate.setUTCDate(Number(selectOption.value));
+                timeDifference();
+            }
+            //设置小时
+            hour.onchange = function(e) {
+                var index=e.target.selectedIndex;
+                // console.log(e.target);
+                var selectOption=e.target.children[index];
+                selectDate.setUTCDate(Number(selectOption.value));
+                timeDifference();
+            }
+            //设置分钟
+            minite.onchange = function(e) {
+            var index=e.target.selectedIndex;
+            // console.log(e.target);
+            var selectOption=e.target.children[index];
+            selectDate.setUTCDate(Number(selectOption.value));
+            timeDifference();
+            }
+             //设置秒
+            second.onchange = function(e) {
+            var index=e.target.selectedIndex;
+            // console.log(e.target);
+            var selectOption=e.target.children[index];
+            selectDate.setUTCSeconds(Number(selectOption.value));
+            timeDifference();
+            }
+            //格式化星期
+            function getWeek(date) {
+                var weeksChinese = new Array();
+                weeksChinese[0] ="星期日";
+                weeksChinese[1] ="星期一";
+                weeksChinese[2] ="星期二";
+                weeksChinese[3] ="星期三";
+                weeksChinese[4] ="星期四";
+                weeksChinese[5] ="星期五";
+                weeksChinese[6] ="星期六";
+                return weeksChinese[date.getDay()];
+            }
+           //格式化 
+           function format(date,format) {
+               var formatArr = ["YYYY", "MM", "DD", "WW", "HH", "mm", "ss"];
+               var dateArr = [];
+               dateArr[0] = date.getUTCFullYear();
+               dateArr[1] = date.getUTCMonth() + 1;
+               dateArr[2] = date.getUTCDate();
+               dateArr[3] = getWeek(date);
+               dateArr[4] = date.getUTCHours();
+               dateArr[5] = date.getUTCMinutes();
+               dateArr[6] = date.getUTCSeconds();
+               for (var i in dateArr){
+                   format = format.replace(formatArr[i], dateArr[i]);
+               }
+               var clock = document.getElementById("clock")
+                return format;
+              
+           }
+            //时间差
+            function timeDifference() {
+               var nowDate = new Date();
+               var resultString;
+               var x = nowDate.getTime();
+               var y = selectDate.getTime();
+            //    var difference =  Date.parse(selectDate.toString);
+               var difference = x - y;
+              
+               if(difference < 0 ){
+                difference = - difference;
+                resultString = "还有 ";
+              
+               }else {
+                resultString = "已经过去";
+               
+               }
+
+               var seconds = 1000;
+               var minutes = seconds * 60;
+               var hours = minutes * 60;
+               var days = hours * 24;
+               var daysDifference = Math.round(difference / days);
+               var hoursDifference = Math.round(difference % days / hours);
+               var minutesDifference = Math.round(difference % days % hours / minutes);
+               var secondsDifference = Math.round(difference % days % hours % minutes / seconds);
+    
+            //    result.textContent = "现在距离" + selectDate.getUTCFullYear() + "年"+ selectDate.getUTCMonth()
+            //    +"月"+selectDate.getUTCDate()+"日 " +"星期"+
+            //    selectDate.getUTCDay()+" "+ selectDate.getUTCHours()+":"+selectDate.getUTCMinutes()+":"+selectDate.getUTCSeconds()+
+            //    + " "+resultString+" " + daysDifference+"天" +hoursDifference +"小时" + minutesDifference + "分" +  secondsDifference+"秒" ;
+            //    console.log(resultString + "===");
+            result.textContent = "现在距离 " + format(selectDate, "YYYY年MM月DD日 WW HH:mm:ss") + " "+resultString +" "
+            + daysDifference + "天 " +hoursDifference +"小时 " + minutesDifference + "分 " +  secondsDifference+"秒" ;
+            }
+        </script>
+    </body>
+</html>
