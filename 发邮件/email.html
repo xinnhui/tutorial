@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>邮件地址提示</title>
+        <style>
+            ul li:hover {
+                background: #0ff;
+                list-style: none;
+            }
+            ul li {
+                list-style: none;
+                padding-left: 10px;
+                line-height: 2em;
+            }
+            ul {
+                /* width: 140px; */
+                padding-left: 0;
+                margin: 0;
+            }
+            .wrapper{
+                width: 172px;
+                border: 1px solid #9ba5a5;
+                border-top: none;
+            }
+
+            #selected {
+                background: #f00;
+            } 
+
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <input id="email-input" type="text">
+            <ul id="email-sug-wrapper" class="email-sug"></ul>
+        </div>
+
+        <script>
+            var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+            var input = document.getElementById("email-input");
+            var ul = document.getElementById("email-sug-wrapper");
+            ul.getElementsByTagName
+            //inputDom的监听
+            input.onkeyup = function (event) {
+                if (event.key === "Enter") {
+                 var selected =   ul.querySelector("li[id='selectde']");
+                 input.textContent = selected.textContent;
+                }else if (event.key === "ArrowUp"){
+                    // console.log("ArrowUp");
+                    var selectedOld = ul.querySelector("li[id='selected']");
+                    selectedOld.removeAttribute("id");
+                    var liList = ul.querySelectorAll("li");
+                    // console.log(selectedOld.value);
+                    // console.log(typeof(selectedOld.value));
+                    if (selectedOld.value === 0) {
+                        var selectedNow = liList[liList.length -1];
+                        selectedNow.setAttribute("id", "selected");
+                    }else {
+                        var index = Number(selectedOld.value);
+                        // console.log(index);
+                        // console.log(typeof(index));
+                        var selectedNow = liList[index - 1];
+                        selectedNow.setAttribute("id", "selected");
+                    }
+                }else if (event.key === "ArrowDown"){
+                    var selectedOld = ul.querySelector("li[id='selected']");
+                    // console.log(selectedOld);
+                    selectedOld.removeAttribute("id");
+                    // console.log("xxx");
+                    var liList = ul.querySelectorAll("li");
+                    // console.log("yy");
+                    if (Number(selectedOld.value) === liList.length -1) {
+                        var selectedNow = liList[0];
+                        selectedNow.setAttribute("id", "selected");
+                    }else {
+                        console.log("else");
+                        var index = Number(selectedOld.value);
+                        var selectedNow = liList[index + 1];
+                        selectedNow.setAttribute("id", "selected");
+                    }
+                }else{
+                    getInput();
+                    generateTip();
+                    appendTip(); 
+                    controlView();
+                }
+                // console.log(typeof(event.key));
+                // console.log(event.key);
+              
+                // hiddenView();
+                // showView();
+            }
+            //获取用户的输入
+            function getInput() {
+                // console.log("getInput");
+                var inputData = input.value;
+                var wrapperData = inputData.trim();
+                return wrapperData;
+            }
+            //生成提示框的内容
+            function generateTip() {
+                // console.log("generateTip");
+                var wrapperData = getInput(input);
+                var matchData;
+                if (wrapperData.indexOf("@") !== -1){
+                    // console.log(wrapperData.indexOf("@"));
+                    matchData =  wrapperData.slice(wrapperData.indexOf("@") + 1);
+                    wrapperData = wrapperData.slice(0,wrapperData.indexOf("@"));
+                }
+                var liListIndexOf = [];
+                var liList = [];
+                //输入是否含有匹配词的标志，进而选择返回的内容数组
+                var tag = 0;
+                for (var i in postfixList) {
+                  var li = document.createElement("li");
+                  if(postfixList[i].indexOf(matchData) !== -1){
+                    //   console.log(matchData);
+                    tag = 1;
+                    var itemTip = wrapperData + "@" + postfixList[i];
+                    li.textContent = HtmlUtil.htmlEncode(itemTip);
+                    li.setAttribute("class", "emaliLi");
+                    liListIndexOf.unshift(li);
+                  }else {
+                    var itemTip = wrapperData + "@" + postfixList[i];
+                    li.textContent = HtmlUtil.htmlEncode(itemTip);
+                    li.setAttribute("class", "emaliLi");
+                    // li.setAttribute("value", i);
+                    liList.unshift(li);
+                  }
+                }
+               if(tag === 0){
+                    // console.log(liList);
+                    liList[0].setAttribute('id', "selected");
+                    for (var i =0; i < liList.length; i++){
+                        liList[i].value = i;
+                    }
+                    return liList;
+               }else {
+                    // console.log(liListIndexOf);
+                    liListIndexOf[0].setAttribute('id', "selected");
+                    for (var i =0; i < liListIndexOf.length; i++){
+                        liListIndexOf[i].value = i;
+                    }
+                    return liListIndexOf;
+               }
+                
+            }
+            // 将内容添加到email-sug-wrapper
+            function appendTip() {
+                // console.log("appendTip");
+                ul.textContent = "";
+               var liList = generateTip();
+               for (var i in liList){
+                ul.appendChild(liList[i]);
+               }
+                
+            }
+            //控制提示是否隐藏
+            function controlView() {
+                // console.log("controlView");
+                var wrapperData = getInput();
+                // console.log(wrapperData);
+                if (wrapperData === "") {
+                    // console.log(wrapperData + "====");
+                    hiddenView(); 
+                }else {
+                    showView(); 
+                }
+            }
+            //隐藏提示框
+            function hiddenView() {
+                // console.log("hiddenView");
+                ul.style.display ="none";
+            }
+            //显示提示框
+            function showView() {
+                // console.log("showView");
+                ul.style.display = "block";
+            }
+
+            //单击li标签
+            ul.onclick = function (e) {
+                var e = e || window.event;
+                var target = e.target || e.srcElement;
+                var liName = target.nodeName.toLowerCase();
+                if (liName === "li") {
+                    input.value = HtmlUtil.htmlDecode(target.textContent);
+                    hiddenView();
+                }
+            }
+
+            //防止xxs攻击
+            var HtmlUtil = {
+                /*1.用浏览器内部转换器实现html转码*/
+                htmlEncode:function (html){
+                    //1.首先动态创建一个容器标签元素，如DIV
+                    var temp = document.createElement ("div");
+                    //2.然后将要转换的字符串设置为这个元素的innerText(ie支持)或者textContent(火狐，google支持)
+                    (temp.textContent != undefined ) ? (temp.textContent = html) : (temp.innerText = html);
+                    //3.最后返回这个元素的innerHTML，即得到经过HTML编码转换的字符串了
+                    var output = temp.innerHTML;
+                    temp = null;
+                    return output;
+                },
+                /*2.用浏览器内部转换器实现html解码*/
+                htmlDecode:function (text){
+                    //1.首先动态创建一个容器标签元素，如DIV
+                    var temp = document.createElement("div");
+                    //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
+                    temp.innerHTML = text;
+                    //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持)，即得到经过HTML解码的字符串了。
+                    var output = temp.innerText || temp.textContent;
+                    temp = null;
+                    return output;
+                },
+                /*3.用正则表达式实现html转码*/
+                htmlEncodeByRegExp:function (str){ 
+                    var s = "";
+                    if(str.length == 0) return "";
+                    s = str.replace(/&/g,"&");
+                    s = s.replace(/</g,"<");
+                    s = s.replace(/>/g,">");
+                    s = s.replace(/ /g," ");
+                    s = s.replace(/\'/g,"'");
+                    s = s.replace(/\"/g,'"');
+                    return s; 
+                },
+                /*4.用正则表达式实现html解码*/
+                htmlDecodeByRegExp:function (str){ 
+                        var s = "";
+                        if(str.length == 0) return "";
+                        s = str.replace(/&/g,"&");
+                        s = s.replace(/</g,"<");
+                        s = s.replace(/>/g,">");
+                        s = s.replace(/ /g," ");
+                        s = s.replace(/'/g,"\'");
+                        s = s.replace(/"/g,"\"");
+                        return s; 
+                }
+            };
+
+            //重置选中状态
+            function  reset() {
+                var liList = ul.querySelectorAll("li");
+                // var selected;
+                for (var i=0; i < liList.length; i++) {
+                 var x =liList[i].getAttribute("id");
+                    if ( x === "selected" && i !== 0) {
+                        liList[i].removeAttribute("id");
+                        liList[0].setAttribute("id", "selected");
+                    }
+                //    var firstLi = ul.querySelector("li");
+                //     firstLi.setAttribute("id", "selected");
+                }
+            }
+        </script>
+    </body>
+</html>
