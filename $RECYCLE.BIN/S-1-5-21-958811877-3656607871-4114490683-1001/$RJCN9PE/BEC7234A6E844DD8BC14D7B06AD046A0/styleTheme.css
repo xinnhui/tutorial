@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width:100vw; height:100%; font-size:3vw;
+    margin: 0;
+    color: #fff;
+}
+
+body {
+    padding: 3.5vw;
+    background: url("../images/city_bg.jpg") center/100% 150% no-repeat;
+    background-color: #20124d;
+    /* font-size: 1.3vw; */
+    /* display: flex; */
+    flex-flow: column nowrap;
+}
+
+.out {
+    width: 100%;
+    min-height: 100%;
+}
+p {
+    margin: 0;
+}
+div {
+    /* padding: 2vw; */
+    margin: 0 auto;
+} 
+
+header {
+     /* height: 8%; */
+     width: 55%;
+     margin: 0 auto;
+     padding: 3vh 0 2vh 0;
+}
+
+header img {
+    width: 100%;
+}
+
+.theme {
+    position: relative;
+        /* flex: 0 0; */
+    /* height: 33%; */
+    width: 100%;
+    border: 1.5vw solid #ffbfd3;
+    border-radius: 4vw;
+    padding: 3.5vw;
+    background: #f95285;
+}
+
+h1 {
+    padding-left: .1vw;
+    margin: .5vw 0;
+    width: 15vw;
+    height: 6vw;
+    color: #f95285;
+    font-size: 3.6vw;
+    line-height: 6vw;
+    text-align: center;
+    background: url(../images/title_bg.png) left/contain no-repeat;
+}
+.theme p {
+    line-height: 5vw;
+}
+
+#themeImg {
+    background: url(../images/logo.png) center/contain no-repeat;
+    width: 20vw;
+    height: 10vh;
+    position: absolute;
+    right: -5vw;
+    bottom: -4.5vh;
+}
+
+
+.time {
+    /* height: 25%; */
+    width: 100%;
+    overflow: hidden;
+}
+
+.addrssList {
+    width: calc(510% + 18vw);
+}
+
+
+.address {
+    display: inline-block;
+    width: calc(16.5% - 3vw);
+    border: 1.5vw solid #ffbfd3;
+    border-radius: 2vw;
+    padding: 2vh 3.5vw;
+    margin-right: 3vw;
+    background: #f95285;
+    font-size: 3.1vw;
+}
+
+.address p {
+    margin-bottom: 0;
+    margin-top: .5vw;
+    line-height: 5vw;
+}
+
+.address p:first-child {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 4vw;
+    text-align: center;
+
+}
+
+footer {
+    /* height: 33%; */
+    position: relative;
+    top: 1vh;
+    /* left: -2vw; */
+    width: 100%;
+    /* height: 50%; */
+    /* background: url("../images/flower4.png") 0 0/contain no-repeat; */
+    /* background-color: transparent; */
+}
+
+.img {
+    width: 100%;
+}
+
+.img img {
+    position: relative;
+    left: -3.5vw;
+    width: 100% ;
+    /* height: 100%; */
+}
+
+.link {
+    position: absolute;
+    display: inline-block;
+    font-size: 3vw;
+    color: #f00;
+    border: 1px solid #f00;
+    text-align: center;
+    z-index: 1;
+   
+}
+
+#beijing {
+    left: 20%;
+    bottom: 46%;
+    width: 10vw;
+    height: 7vw;
+    transform: rotate(45deg);
+}
+
+#chengdu {
+    left: 30%;
+    bottom: 60%;
+    width: 10vw;
+    height: 7vw;
+    transform: rotate(45deg);
+}
+
+#gaungzhou {
+    left: 41%;
+    bottom: 77%;
+    width: 9vw;
+    height: 6vw;
+}
+
+#changsha {
+    left: 55%;
+    bottom: 58%;
+    width: 10vw;
+    height: 7vw;
+}
+
+#shanghai {
+    left: 62%;
+    bottom: 33%;
+    width: 10vw;
+    height: 7vw;
+}
+
+#shenyang {
+    left: 43%;
+    bottom: 18%;
+    width: 10vw;
+    height: 7vw;
+}
+
+
+
+
+
+

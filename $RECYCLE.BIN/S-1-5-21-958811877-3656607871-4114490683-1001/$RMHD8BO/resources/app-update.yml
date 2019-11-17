@@ -1,0 +1,4 @@
+owner: PPIO
+repo: enfi-cloud-desktop
+provider: github
+updaterCacheDirName: enfi-cloud-desktop-updater
