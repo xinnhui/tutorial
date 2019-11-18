@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.updatPicture {
+    position: relative;
+    /* width: 100%; */
+    height: 70vh;
+    margin: 1.5vh 10vw;
+    border-radius: 4vw;
+    background: url("../images/timePicture/show/status2.png") center 20%/40% no-repeat;
+    background-color: #e7eeff;
+}
+
+.updatPicture .tip {
+    position: absolute;
+    margin-left: -35vw;
+    left: 50%;
+    bottom: 10%;
+    /* width: 50vw; */
+    font-size: 3vw;
+    text-align: center;
+}
+
+.tip p:nth-of-type(1) {
+    margin: 0 auto;
+    width: 50%;
+    /* width: 50%; */
+    color: #f00;
+}
+
+.tip img {
+    width: 70vw;
+    height: 20vw;
+}
+
+.avatarContainer {
+    margin: 2vh 0;
+    width: 100%;
+}
+
+.avatarContainer .avatar {
+    width: 138vw;
+}
+
+.avatarItem {
+    display: inline-block;
+    margin-right: 4vw;
+
+}
+.avatarItem img {
+    display: block;
+    width: 18vw;
+}
+
+.avatarItem p {
+    text-align: center;
+}
+
+.save {
+    display: block;
+    margin: 2vh auto;
+    border-radius: 4vw;
+    width: 80vw;
+    height: 12vw;
+    line-height: 12vw;
+    font-size: 6vw;
+    text-align: center;
+    color: #fff;
+    background-color: #cc1351;
+}
+
+
+
