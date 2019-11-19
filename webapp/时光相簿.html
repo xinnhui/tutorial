@@ -6,11 +6,18 @@
         <title>时光相簿</title>
     </head>
    <body>
-        <div class="updatPicture">
+        <div class="updatPicture" id="updatPicture">
             <div class="tip">
+                <!-- <img id="previewImg" src="https://avatars1.githubusercontent.com/u/25993112?s=460&v=4" alt="预览" /> -->
                 <p>请上传无遮挡的正脸照或竖版时装照</p>
                 <p>选择时装合成您的时光靓照</p>
-                <img src="./images/timePicture/show/btn.png" alt="上传头像">
+                <label for="file">
+                    <img src="./images/timePicture/show/btn.png" alt="上传头像" id="updateAvatar">
+                </label>
+                <!-- <input type="file" name="myFile" id="file" accept=".png, .jpg, .jpeg" required> -->
+                <!-- <div class="button" role="button"> -->
+                      <input type="file" name="file" class="upload-img" accept="image/*" onchange="chooseImg(this)" id="file" />
+                <!-- </div> -->
             </div>
         </div>   
         <div class="avatarContainer">
@@ -41,10 +48,93 @@
                 </div>
             </div>
         </div> 
-        <button class="save">
-            保存
+        <button class="save" id="save">
+            <a href="https://wwww.baidu.com">保存</a>
         </button>
-      
+        <script src="./dist/clipic.js"></script>
+        <script>
+            var save = document.getElementById("save");
+            var pictureSrc;
+            var clipic = new Clipic()
+            function chooseImg(event) {
+                var files = event.files || event.dataTransfer.files
+                var reader = new FileReader()
+                reader.readAsDataURL(files[0])
+                reader.onload = e => {
+                clipic.getImage({
+                    // width: 500,
+                    // height: 100,
+                    ratio: 300 / 568,
+                    src: e.target.result,
+                    // buttonText: ['Cancel', 'Reset', 'Done'],
+                    onDone: function(e) {
+                    // document.getElementById('previewImg').src = e
+                    var img = document.createElement("img");
+                    img.classList.add("obj");
+                    // img.file = file;
+                    img.src = e;
+                    pictureSrc = e;
+                    updatPicture.innerHTML = "";
+                    updatPicture.appendChild(img);
+ 
+                    //xx
+
+//x
+                    }
+                })
+                }
+                event.value = ''
+            }
+            //保存图片
+           function saveImg (Url) {
+                var blob=new Blob([''], {type:'application/octet-stream'});
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = Url;
+                a.download = Url.replace(/(.*\/)*([^.]+.*)/ig,"$2").split("?")[0];
+                var e = document.createEvent('MouseEvents');
+                e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                a.dispatchEvent(e);
+                URL.revokeObjectURL(url);
+            }
+            save.addEventListener("click", function(pictureSrc) {
+                saveImg(pictureSrc);
+                alert("xxx");
+            },true)
+
+        </script>
+        <!-- <script>
+          var updatPicture = document.getElementById("updatPicture")
+          var input = document.getElementById("file");
+        
+          console.log(input);
+         
+          input.addEventListener("change",function() {
+            var file = input.files[0];
+            console.log(file);
+            console.log(typeof(file));
+            handleFiles(file);
+          },false)
+
+          function handleFiles(file) {
+            var imageType = /^image\//;
+            if (!imageType.test(file.type)){
+
+            }
+            var img = document.createElement("img");
+            img.classList.add("obj");
+            img.file = file;
+            updatPicture.innerHTML = "";
+            updatPicture.appendChild(img);
+
+            var reader = new FileReader();
+            reader.onload = (function(aImg) {return function(e) {
+                aImg.src = e.target.result;
+            }})(img);
+            reader.readAsDataURL(file);
+          }
+       </script> -->
+
    </body>
 
 </html>
