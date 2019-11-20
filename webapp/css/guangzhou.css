@@ -42,6 +42,10 @@ header .link {
     line-height: 5vh;
 }
 
+.link a {
+  text-decoration: none;
+  color: #fff;
+}
 
 .thumbs {
     width: 100%;

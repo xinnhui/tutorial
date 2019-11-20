@@ -135,6 +135,10 @@ footer {
     /* height: 100%; */
 }
 
+.img a {
+    opacity: 0;
+}
+
 .link {
     position: absolute;
     display: inline-block;
