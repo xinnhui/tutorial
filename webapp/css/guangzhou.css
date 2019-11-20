@@ -45,35 +45,36 @@ header .link {
 
 .thumbs {
     width: 100%;
-    height: 44vh;
-    padding: 4vh 3.2vw;
+    /* height: 44vh; */
+    padding: 4vh 3.2vw 0;
     border-radius: 4.5vw;
     background: url(../images/guangzhou/activity/card_bg.png) center/150% no-repeat;
 }
 
-.imgContainer {
+/* .imgContainer {
     width: 100%;
     overflow: hidden;
-}
-
+} */
+/* 
 .imgList {
     width: 385vw;
-}
+} */
 
- .imgList img{
+ /* .imgList img{
     width: 71vw;
     height: 23vh;
     margin-right: 5vw;
     border-radius: 1.5vw;
-}
-.tag {
+} */
+/* .tag {
     width: 100%;
     height: 6vh;
-}
+} */
 
 .button {
-    width: 70vw;
-    margin: 0 auto;
+  
+  width: 70vw;
+  margin: 4vw auto 0;
 }
 .button img{
     width: 70vw;
@@ -86,7 +87,7 @@ header .link {
     padding: 4vh 3.2vw;
     border-radius: 4.5vw;
     width: 100%;
-    height: 30vh;
+    /* height: 30vh; */
     font-size: 3.2vw;
     line-height: 6vw;
     background: #f67fa9;
@@ -95,3 +96,78 @@ header .link {
 .address h2 {
    margin-top: 0;
 }
+
+
+/* 图片滑动 */
+ /* 清除标签默认边距 */
+
+ ul,
+ li,
+ ol,
+ img {
+   margin: 0;
+   padding: 0;
+ }
+
+ /* 清除 ul 等标签前面的“小圆点” */
+ ul,
+ li,
+ ol {
+   list-style-type: none;
+ }
+
+ /* 图片自适应 */
+ img {
+  width: 100%;
+  height: auto;
+  margin-right: 5vw;
+  border-radius: 1.5vw;
+   /* ie8 */
+   display: block;
+   -ms-interpolation-mode: bicubic;
+   /*为了照顾ie图片缩放失真*/
+ }
+
+ /* 轮播图最外层盒子 */
+ .carousel {
+   position: relative;
+   overflow: hidden;
+ }
+
+ .carousel ul {
+   /* 这个高度需要在JS里面动态添加 */
+ }
+
+ .carousel ul li {
+   position: absolute;
+   width: 80%;
+   left: 0;
+   top: 0;
+   /* 使用 transform:translaX(300%) 暂时将 li 移动到屏幕外面去*/
+   -webkit-transform: translateX(300%);
+   transform: translateX(300%);
+ }
+
+ /* 小圆点盒子 */
+ .carousel .points {
+   /* 未知宽度的盒子，使用 absolute 定位，结合 transform 的方式进行居中 */
+   position: absolute;
+   left: 50%;
+   bottom: 10px;
+   transform: translateX(-50%);
+ }
+
+ /* 小圆点 */
+ .carousel .points li {
+   width: 5px;
+   height: 5px;
+   border-radius: 50%;
+   border: 1px solid #fff;
+   float: left;
+   margin: 0 2px;
+ }
+
+ /* 选中小圆点的样式类 */
+ .carousel .points li.active {
+   background-color: #fff;
+ }

@@ -20,30 +20,30 @@
                 <!-- </div> -->
             </div>
         </div>   
-        <div class="avatarContainer">
-            <div class="avatar">
+        <div class="avatarContainer" id="avatarContainer">
+            <div class="avatar" id="avatar">
                 <div class="avatarItem">
-                    <img src="./images/timePicture/template/none.png" alt="原图">
+                    <img src="./images/timePicture/template/none.png" alt="原图" id="avatar1">
                     <p>原图</p>
                 </div>
                 <div class="avatarItem">
-                    <img src="./images/timePicture/template/gz1.png" alt="中山装">
+                    <img src="./images/timePicture/template/gz1.png" alt="中山装" id="avatar2">
                     <p>中山装</p>
                 </div>
                 <div class="avatarItem">
-                    <img src="./images/timePicture/template/gz2.png" alt="牛仔装">
+                    <img src="./images/timePicture/template/gz2.png" alt="牛仔装" id="avatar3">
                     <p>牛仔装</p>
                 </div>
                 <div class="avatarItem">
-                    <img src="./images/timePicture/template/gz3.png" alt="连衣裙">
+                    <img src="./images/timePicture/template/gz3.png" alt="连衣裙" id="avatar4">
                     <p>连衣裙</p>
                 </div>
                 <div class="avatarItem">
-                    <img src="./images/timePicture/template/gz4.png" alt="格子衫">
+                    <img src="./images/timePicture/template/gz4.png" alt="格子衫" id="avatar5">
                     <p>格子衫</p>
                 </div>
                 <div class="avatarItem">
-                    <img src="./images/timePicture/template/gz5.png" alt="文化衫">
+                    <img src="./images/timePicture/template/gz5.png" alt="文化衫" id="avatar6">
                     <p>文化衫</p>
                 </div>
             </div>
@@ -76,10 +76,6 @@
                     pictureSrc = e;
                     updatPicture.innerHTML = "";
                     updatPicture.appendChild(img);
- 
-                    //xx
-
-//x
                     }
                 })
                 }
@@ -102,6 +98,9 @@
                 alert("xxx");
             },true)
 
+        </script>
+        <script src="./js/picturejs.js">
+            
         </script>
         <!-- <script>
           var updatPicture = document.getElementById("updatPicture")

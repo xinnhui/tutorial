@@ -1,147 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>兼容移动端/PC端悬浮模块拖动效果</title>
-    <style>
-        * {
-            margin: 0;
-        }
-        body{
-            width: 100%;
-            height: 2000px;
-        }
-        #box{
-            width: 100%;
-            height: 1000px;
-            border: 1px solid black;
-        }
-        #model{
-            position: absolute;
-            top:0;
-            left:0;
-            width: 100px;
-            height: 100px;
-            background: #bbbbbb;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <!-- 添加视口 -->
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原生 js 实现 Touch 轮播图</title>
+  <style>
+    /* 清除标签默认边距 */
+    body,
+    ul,
+    li,
+    ol,
+    img {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 清除 ul 等标签前面的“小圆点” */
+    ul,
+    li,
+    ol {
+      list-style-type: none;
+    }
+
+    /* 图片自适应 */
+    img {
+      width: 100%;
+      height: auto;
+      border: none;
+      /* ie8 */
+      display: block;
+      -ms-interpolation-mode: bicubic;
+      /*为了照顾ie图片缩放失真*/
+    }
+
+    /* 轮播图最外层盒子 */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel ul {
+      /* 这个高度需要在JS里面动态添加 */
+    }
+
+    .carousel ul li {
+      position: absolute;
+      width: 80%;
+      left: 0;
+      top: 0;
+      /* 使用 transform:translaX(300%) 暂时将 li 移动到屏幕外面去*/
+      -webkit-transform: translateX(300%);
+      transform: translateX(300%);
+    }
+
+    /* 小圆点盒子 */
+    .carousel .points {
+      /* 未知宽度的盒子，使用 absolute 定位，结合 transform 的方式进行居中 */
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+    }
+
+    /* 小圆点 */
+    .carousel .points li {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      float: left;
+      margin: 0 2px;
+    }
+
+    /* 选中小圆点的样式类 */
+    .carousel .points li.active {
+      background-color: #fff;
+    }
+  </style>
 </head>
+
 <body>
-<div id="box">
-    <div id="model"></div>
-</div>
-<script>
-    /**
-     *  简单实现悬浮模块拖动效果，此外加了悬浮模块靠左居左，靠右居右，
-     *  可延申添加类似ios AssistiveTouch的实现，本方法未加靠上居上和靠下居下的功能。
-     * @param model 可拖动元素
-     * @param box 拖动元素的父元素，也是拖动元素位置范围的限制元素
-     * @constructor
-     */
-    var ModelMoveUtil = function (model,box) {
-        var flag = false;
-        var boxWidth = box.offsetWidth,
-            boxHeight = box.offsetHeight,
-            modelWidth = model.offsetWidth,
-            modelHeight = model.offsetHeight;
-        var cur = {
-            x:0,
-            y:0
-        };
-        var moveX,moveY,modelX,modelY,x,y;
-        function down(event){
-            flag = true;
-            var touch ;
-            if(event.touches){
-                touch = event.touches[0];
-            }else {
-                touch = event;
-            }
-            cur.x = touch.clientX;//点击位置的X坐标
-            cur.y = touch.clientY;//点击位置的Y坐标
-            modelX = model.offsetLeft;//模块的X坐标
-            modelY = model.offsetTop;//模块的Y坐标
-            // console.log("点击：cur={"+cur.x+","+cur.y+"}, modelX="+modelX+", modelY="+modelY);
-        }
-        function move(event){
-            if(flag) {
-                //阻止页面的滑动默认事件
-                event.preventDefault();
-                // console.log("点击：cur={" + cur.x + "," + cur.y + "}");
-                var touch;
-                if (event.touches) {
-                    touch = event.touches[0];
-                } else {
-                    touch = event;
-                }
-                moveX = touch.clientX - cur.x;//与初始位置相对，X坐标的移动距离
-                moveY = touch.clientY - cur.y;//与初始位置相对，Y坐标的移动距离
-                x = modelX + moveX;//当前模块的X坐标
-                y = modelY + moveY;//当前模块的Y坐标
-                if (x < 0) {
-                    model.style.left = 0;
-                } else if (x > (boxWidth - modelWidth)) {
-                    model.style.right = 0;
-                } else {
-                    model.style.left = x + "px";
-                }
-                if ( y < 0) {
-                    model.style.top = 0 + "px";
-                } else if(y > (boxHeight - modelHeight)){
-                    model.style.bottom = 0;
-                } else {
-                    model.style.top = y + "px";
-                }
-
-                // document.addEventListener("touchmove",function(e){
-                //     // 判断默认行为是否可以被禁用
-                //     if (e.cancelable) {
-                //         // 判断默认行为是否已经被禁用
-                //         if (!e.defaultPrevented) {
-                //             e.preventDefault();
-                //         }
-                //     }
-                // },false);
-            }
-        }
-        //鼠标释放时候的函数
-        function end(event){
-            flag = false;
-            var nowModelX = model.offsetLeft;
-            var nowModelY = model.offsetTop;
-            var pointX = nowModelX + modelWidth/2;
-            var pointY = nowModelY + modelHeight/2;
-            // console.log("模块中心坐标：(" + pointX+","+ pointY+")");
-            if(pointX < boxWidth/2){
-                model.style.left = 0;
-            }else{
-                model.style.left = (boxWidth - modelWidth) + "px";
-            }
-        }
-
-        model.addEventListener("mousedown",function(e){
-            down(e);
-        },false);
-        model.addEventListener("touchstart",function(e){
-            down(e);
-        },false);
-        model.addEventListener("mousemove",function(e){
-            move(e);
-        },false);
-        model.addEventListener("touchmove",function(e){
-            move(e);
-        },false);
-        document.body.addEventListener("mouseup",function(e){
-            end(e);
-        },false);
-        model.addEventListener("touchend",function(e){
-            end(e);
-        },false);
-    };
-
-    var model = document.getElementById("model");
-    var box = document.getElementById("box");
-    new ModelMoveUtil(model,box);
-</script>
+  <section class="carousel">
+    <ul>
+      <li><a href="#"><img src="./images/guangzhou/thumbs/1.jpg"  alt=""></a></li>
+      <li><a href="#"><img src="./images/guangzhou/thumbs/1.jpg"  alt=""></a></li>
+      <li><a href="#"><img src="./images/guangzhou/thumbs/1.jpg"  alt=""></a></li>
+      <li><a href="#"><img src="./images/guangzhou/thumbs/1.jpg"  alt=""></a></li>
+      <li><a href="#"><img src="./images/guangzhou/thumbs/1.jpg"  alt=""></a></li>
+    </ul>
+    <ol class="points"></ol>
+  </section>
 </body>
+
+
+<script>
+  window.onload = function () {
+    var carousel = document.querySelector('.carousel');
+    var carouselUl = carousel.querySelector('ul');
+    var carouselLis = carouselUl.querySelectorAll('li');
+    var points = carousel.querySelector('ol');
+    // 屏幕的宽度
+    var screenWidth = document.documentElement.offsetWidth;
+    var timer = null;
+
+    // 设置 ul 的高度
+    carouselUl.style.height = carouselLis[0].offsetHeight + 'px';
+
+    // 动态生成小圆点
+    for (var i = 0; i < carouselLis.length; i++) {
+      var li = document.createElement('li');
+      if (i == 0) {
+        li.classList.add('active');
+      }
+      points.appendChild(li);
+    }
+
+    // 初始三个固定的位置
+    var left = carouselLis.length - 1;
+    var center = 0;
+    var right = 1;
+
+    // 归位（多次使用，封装成函数）
+    setTransform();
+
+    // 调用定时器
+    timer = setInterval(showNext, 2000);
+
+    // 分别绑定touch事件
+    var startX = 0; // 手指落点
+    var startTime = null; // 开始触摸时间
+    carouselUl.addEventListener('touchstart', touchstartHandler); // 滑动开始绑定的函数 touchstartHandler
+    carouselUl.addEventListener('touchmove', touchmoveHandler); // 持续滑动绑定的函数 touchmoveHandler
+    carouselUl.addEventListener('touchend', touchendHandeler); // 滑动结束绑定的函数 touchendHandeler
+
+    // 轮播图片切换下一张
+    function showNext() {
+      // 轮转下标
+      left = center;
+      center = right;
+      right++;
+      //　极值判断
+      if (right > carouselLis.length - 1) {
+        right = 0;
+      }
+      //添加过渡（多次使用，封装成函数）
+      setTransition(1, 1, 0);
+      // 归位
+      setTransform();
+      // 自动设置小圆点
+      setPoint();
+    }
+
+    // 轮播图片切换上一张
+    function showPrev() {
+      // 轮转下标
+      right = center;
+      center = left;
+      left--;
+      //　极值判断
+      if (left < 0) {
+        left = carouselLis.length - 1;
+      }
+      //添加过渡
+      setTransition(0, 1, 1);
+      // 归位
+      setTransform();
+      // 自动设置小圆点
+      setPoint();
+    }
+
+    // 滑动开始
+    function touchstartHandler(e) {
+      // 清除定时器
+      clearInterval(timer);
+      // 记录滑动开始的时间
+      startTime = Date.now();
+      // 记录手指最开始的落点
+      startX = e.changedTouches[0].clientX;
+    }
+    // 滑动持续中
+    function touchmoveHandler(e) {
+      // 获取差值 自带正负
+      var dx = e.changedTouches[0].clientX - startX;
+      // 干掉过渡
+      setTransition(0, 0, 0);
+      // 归位
+      setTransform(dx);
+    }
+    //　滑动结束
+    function touchendHandeler(e) {
+      // 在手指松开的时候，要判断当前是否滑动成功
+      var dx = e.changedTouches[0].clientX - startX;
+      // 获取时间差
+      var dTime = Date.now() - startTime;
+      // 滑动成功的依据是滑动的距离（绝对值）超过屏幕的三分之一 或者滑动的时间小于300毫秒同时滑动的距离大于30
+      if (Math.abs(dx) > screenWidth / 3 || (dTime < 300 && Math.abs(dx) > 30)) {
+        // 滑动成功了
+        // 判断用户是往哪个方向滑
+        if (dx > 0) {
+          // 往右滑 看到上一张
+          showPrev();
+        } else {
+          // 往左滑 看到下一张
+          showNext();
+        }
+      } else {
+        // 添加上过渡
+        setTransition(1, 1, 1);
+        // 滑动失败了
+        setTransform();
+      }
+
+      // 重新启动定时器
+      clearInterval(timer);
+      // 调用定时器
+      timer = setInterval(showNext, 2000);
+    }
+    // 设置过渡
+    function setTransition(a, b, c) {
+      if (a) {
+        carouselLis[left].style.transition = 'transform 1s';
+      } else {
+        carouselLis[left].style.transition = 'none';
+      }
+      if (b) {
+        carouselLis[center].style.transition = 'transform 1s';
+      } else {
+        carouselLis[center].style.transition = 'none';
+      }
+      if (c) {
+        carouselLis[right].style.transition = 'transform 1s';
+      } else {
+        carouselLis[right].style.transition = 'none';
+      }
+    }
+
+    //　封装归位
+    function setTransform(dx) {
+      dx = dx || 0;
+      carouselLis[left].style.transform = 'translateX(' + (-screenWidth + dx) + 'px)';
+      carouselLis[center].style.transform = 'translateX(' + dx + 'px)';
+      carouselLis[right].style.transform = 'translateX(' + (screenWidth *.9 + dx) + 'px)';
+    }
+    // 动态设置小圆点的active类
+    var pointsLis = points.querySelectorAll('li');
+
+    function setPoint() {
+      for (var i = 0; i < pointsLis.length; i++) {
+        pointsLis[i].classList.remove('active');
+      }
+      pointsLis[center].classList.add('active');
+    }
+  }
+</script>
+
 </html>

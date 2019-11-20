@@ -67,14 +67,19 @@ body {
 }
 
 .avatarContainer .avatar {
-    width: 138vw;
+    width: 139vw;
 }
 
 .avatarItem {
     display: inline-block;
     margin-right: 4vw;
-
 }
+
+.avatarItem .selected {
+    border: 2px solid #f00;
+    border-radius: 50%;
+}
+
 .avatarItem img {
     display: block;
     width: 18vw;
@@ -96,6 +101,13 @@ body {
     color: #fff;
     background-color: #cc1351;
 }
+
+.save a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
 
 /* 图片上传 */
 

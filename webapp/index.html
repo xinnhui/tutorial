@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>广州活动图集</title>
+	<link rel="stylesheet" href="css/guangzhouPicture.css">
+    <script src="js/spotlight.bundle.js"></script>
+</head>
+<body>
+
+			<!-- <h1>js弹出层Lightbox图片画廊插件spotlight.js</h1>		 -->
+
+	<p class="spotlight-group">
+        <!-- <b>Anchors &amp; Images</b> -->
+        <a class="spotlight" href="./images/guangzhou/thumbs/1.jpg">
+            <img src="./images/guangzhou/thumbs/1.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/2.jpg">
+            <img src="./images/guangzhou/thumbs/2.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/3.jpg">
+            <img src="./images/guangzhou/thumbs/3.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/4.jpg">
+            <img src="./images/guangzhou/thumbs/4.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/5.jpg">
+            <img src="./images/guangzhou/thumbs/5.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/6.jpg">
+            <img src="./images/guangzhou/thumbs/6.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/7.jpg">
+            <img src="./images/guangzhou/thumbs/7.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/8.jpg">
+            <img src="./images/guangzhou/thumbs/8.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/9.jpg">
+            <img src="./images/guangzhou/thumbs/9.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/10.jpg">
+            <img src="./images/guangzhou/thumbs/10.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/11.jpg">
+            <img src="./images/guangzhou/thumbs/11.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/12.jpg">
+            <img src="./images/guangzhou/thumbs/12.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/13.jpg">
+            <img src="./images/guangzhou/thumbs/13.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/14.jpg">
+            <img src="./images/guangzhou/thumbs/14.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/15.jpg">
+            <img src="./images/guangzhou/thumbs/15.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/16.jpg">
+            <img src="./images/guangzhou/thumbs/16.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/17.jpg">
+            <img src="./images/guangzhou/thumbs/17.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/18.jpg">
+            <img src="./images/guangzhou/thumbs/18.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/19.jpg">
+            <img src="./images/guangzhou/thumbs/19.jpg" alt="广州活动图片">
+        </a>
+        <a class="spotlight" href="./images/guangzhou/thumbs/20.jpg">
+            <img src="./images/guangzhou/thumbs/20.jpg" alt="广州活动图片">
+        </a>
+    </p>
+    <!-- <b>Custom Elements</b>
+    <div class="spotlight-group">
+        <div class="spotlight image" data-src="gallery/t1.jpg" style="background-image:url(gallery/t1.jpg)"></div>
+        <div class="spotlight image" data-src="gallery/t2.jpg" style="background-image:url(gallery/t2.jpg)"></div>
+        <div class="spotlight image" data-src="gallery/t3.jpg" style="background-image:url(gallery/t3.jpg)"></div>
+    </div>
+    <br>
+    <b>API Call</b>
+    <p>Choose Animation:</p>
+    <input type="checkbox" value="slide" checked> Slide &emsp;
+    <input type="checkbox" value="fade" checked> Fade &emsp;
+    <input type="checkbox" value="scale" checked> Scale &emsp;
+    <input type="checkbox" value="flip"> Flip
+    <br><br>
+    <div class="image" style="height: auto">
+        <button onclick="showGallery(1)">Show</button>
+    </div>
+    <div class="image" style="height: auto">
+        <button onclick="showGallery(2)">Show</button>
+    </div>
+    <div class="image" style="height: auto">
+        <button onclick="showGallery(3)">Show</button>
+    </div>
+    <div>
+        <div class="image" style="background-image:url(gallery/t4.jpg)"></div>
+        <div class="image" style="background-image:url(gallery/t5.jpg)"></div>
+        <div class="image" style="background-image:url(gallery/t6.jpg)"></div>
+    </div> -->
+
+	 
+    <script>
+
+        const checkboxes = document.getElementsByTagName("input");
+
+        const gallery = [{
+
+            title: "Image 1",
+            description: "This is a description.",
+            src: "gallery/t4.jpg"
+        },{
+            title: "Image 2",
+            description: "This is a description.",
+            src: "gallery/t5.jpg"
+        },{
+            title: "Image 3",
+            description: "This is a description.",
+            src: "gallery/t6.jpg"
+        }];
+
+        window.showGallery = function(index){
+
+            Spotlight.show(gallery, {
+
+                index: index,
+                theme: "dark",
+                animation:  [
+                    checkboxes[0].checked && checkboxes[0].value,
+                    checkboxes[1].checked && checkboxes[1].value,
+                    checkboxes[2].checked && checkboxes[2].value,
+                    checkboxes[3].checked && checkboxes[3].value
+                ]
+            });
+        };
+
+    </script>
+</body>
+</html>
