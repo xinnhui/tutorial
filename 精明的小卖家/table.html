@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>表单</title>
+    </head>
+    <body>
+        <checked id="region-select">
+            <option>---</option>
+            <option>华东</option>
+            <option>华南</option>
+            <option>华北</option>
+        </select>
+        <select id="product-select">
+            <option>---</option>
+            <option>手机</option>
+            <option>笔记</option>
+            <option>智能音箱</option>
+        </select>
+
+        <div id="table-wrapper">
+            <div id="region-radio-wrapper"></div>
+            <div id="product-radio-wrapper"></div>
+        </div>
+        
+        <script src="./js/ife31data.js"></script>
+        <script>
+            //region-select 绑定change事件
+            let tableWrapperContent = document.getElementById("table-wrapper");
+            let regionWrpper = document.getElementById("region-wrpper");
+            let productWrpper = document.getElementById("product-wrpper");
+            tableWrapper(sourceData[0]);
+            let regionSelect = document.getElementById("region-select");
+            let productSelect = document.getElementById("product-select");
+            //地区选项
+            regionSelect.addEventListener("change", function() {
+                //渲染表格
+                // regionWrpper.textContent = "";
+                let source = myData();
+                tableWrapper(source);
+            },false)
+            //产品选项
+            productSelect.addEventListener("change", function() {
+                //渲染表格
+                let source = myData();
+                tableWrapper(source);
+            },false)
+            //根据select选项获取数据
+            function myData() {
+                let index = regionSelect.selectedIndex;
+                let index2 = productSelect.selectedIndex;
+                let selectValue = regionSelect.options[index].textContent;
+                var source = [];
+                for (var i = 0; i< sourceData.length; i++) {
+                    if (sourceData[i].region === selectValue) {
+                        console.log(sourceData[i]);
+                       source.push(sourceData[i]);
+                    }
+                }
+                let selectProduct = productSelect.options[index2].textContent;
+                for (var i = 0; i< sourceData.length; i++) {
+                    if (sourceData[i].product === selectProduct) {
+                        console.log(sourceData[i]);
+                       source.push(sourceData[i]);
+                    }
+                }
+                console.log(source);
+                return source;
+            }
+            //渲染表格
+            function tableWrapper(source) {
+
+                let table = document.createElement("table");
+                //表头
+                let tr = document.createElement("tr");
+                table.appendChild(tr);
+                let th = document.createElement("th");
+                th.textContent = "商品";
+                tr.appendChild(th);
+                let th2 = document.createElement("th");
+                th2.textContent = "地区";
+                tr.appendChild(th2);
+                for (var i = 0; i < 12; i++) {
+                var th3 = document.createElement("th");
+                th3.textContent = i + "月";
+                tr.appendChild(th3);
+                }
+                //表格数据
+                for (var i = 0; i < source.length; i++){
+                    var tr2 = document.createElement("tr");
+                    table.appendChild(tr2);
+                    var td1 = document.createElement("th");
+                    td1.textContent = source[i].product;
+                    tr2.appendChild(td1);
+                    var td2 = document.createElement("th");
+                    td2.textContent = source[i].region;
+                    tr2.appendChild(td2);
+                    for ( var j = 0; j < 12; j++){
+                        var td = document.createElement("td");
+                        td.textContent = source[i].sale[j];
+                        tr2.appendChild(td);
+                    }
+                }
+                tableWrapperContent.textContent = "";
+                tableWrapperContent.appendChild(table);
+                // return table;
+            }
+        </script>
+    </body>
+</html>

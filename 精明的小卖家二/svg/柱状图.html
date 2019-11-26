@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            柱状图
+        </title>
+    </head>
+    <body>
+        <div id="cloumn">
+        <script type="text/javascript" src="./js/bar.js" ></script>
+        <script>
+            var source = [10, 20, 30, 80, 50, 60, 45, 65, 90, 20, 70, 15];
+          var cloumn =  document.getElementById("cloumn");
+          
+          cloumn.innerHTML=Histogram(source);
+        </script>
+    </body>
+</html>

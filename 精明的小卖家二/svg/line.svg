@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="100%" height="100%" version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+
+<!-- <line x1="0" y1="0" x2="100" y2="100" stroke="black"
+stroke-width="2"/> -->
+<!-- <rect width="100" height="50" stroke="#f00" stroke-width="2" fill="#000"/> -->
+<!-- <circle cx="100" cy="100" r="50" stroke="#f00" stroke-width="2" fill="#fff"/> -->
+<!-- <text x="0" y="0" style="font-family: Verdanda;font-size: 20">SVG</text> -->
+<!-- <text  x="10" y="10" > It's SVG!
+<animateMotion path="M 0 0 L 100 100" dur="5s" fill="freeze"/>
+</text> -->
+<!-- 一朵花 -->
+<!-- <circle cx="75" cy="200" r="50" fill="#f00"/>
+<circle cx="175" cy="200" r="50" fill="#f00"/>
+<circle cx="125" cy="150" r="50" fill="#f00"/>
+<circle cx="125" cy="250" r="50" fill="#f00"/>
+<circle cx="125" cy="200" r="50" fill="#f0f"/>
+<line x1="125" y1="300" x2="125" y2="450" stroke="#0f0" stroke-width="2"/>
+<ellipse cx="75" cy="350" rx="50" ry="25" stroke="#0f0" stroke-width="2" fill="#0f0"/>
+<ellipse cx="175" cy="400" rx="50" ry="25" stroke="#0f0" stroke-width="2" fill="#0f0"/> -->
+<!-- 一棵树 -->
+<circle cx="155" cy="300" r="120" fill="#0f0"/>
+<rect width="10" height="200" x="150" y="300" fill="#dd7e6b"/>
+<polygon points="150,355 50,305 55,300 150,345" fill="#dd7e6b"/>
+<polygon points="160,360 260,310 265,315 160,370" fill="#dd7e6b"/>
+</svg>
