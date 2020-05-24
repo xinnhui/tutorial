@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <style>
+        body {
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            width: 50%;
+            height: 30px;
+        }
+
+        #box {
+            display: none;
+            /* width: 100%; */
+            /* height: 200px; */
+            overflow: hidden;
+            background-color: #f00;
+        }
+
+        .transition {
+            -o-transition: all 5s;
+            -moz-transition: all 5s;
+            -ms-transition: all 5s;
+            -webkit-transition: all 5s;
+            transition: all 5s;
+        }
+
+        .fadeOut {
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        .slideUpDownCollapse {
+            height: 0 !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        .slideLeftRigthCollapse {
+            width: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn-show" class="btn">显示</button><button id="btn-hide" class="btn">隐藏</button>
+    <div id="box" class="transition">
+        <p>123</p>
+        <p>123</p>
+        <p>123</p>
+        <p>123</p>
+        <p>123</p>
+    </div>
+
+    <!-- <p>我要显示了</p> -->
+    <script src="../js/jquery-1.7.1.min.js"></script>
+    <script src="../js/transition.js"></script>
+    <script src="../js/showHide.js"></script>
+
+    <script>
+        var $box = $('#box');
+        // js.fadesliedLeftRight.init($box);
+        // var showHide = window.mt.showHide($box, {
+        //     css3: true,
+        //     animation: 'fade'
+        // });
+        $box.showHide({
+            css3: true,
+            js: true,
+            animation: 'slideUpDown'
+        });
+        $('#btn-show').on('click', function () {
+            // silent.show($box);
+            // css3.fadeSlideUpDown.show($box);
+            // js.fade.show($box);
+            // js.fadesliedLeftRight.show($box);
+            // showHide.show();
+            // showHide($box, 'show')
+            $box.showHide('show');
+        })
+        $('#btn-hide').on('click', function () {
+            // silent.hide($box);
+            // css3.fadeSlideUpDown.hide($box);
+            // js.fade.hide($box);
+            // js.fadesliedLeftRight.hide($box);
+            // showHide.hide();
+            $box.showHide('hide');
+        })
+
+
+
+        //小A
+        $('#box').on('show shown hide hidden', function (e) {
+            if (e.type === 'show') {
+                console.log('show');
+            } else if (e.type === 'shown') {
+                console.log('shown');
+            } else if (e.type === 'hide') {
+                console.log('hide');
+            } else if (e.type === 'hidden') {
+                console.log('hidden');
+            }
+        })
+
+        //小C
+        // $('#box').on('show shown', function(e) {
+        //     if (e.type === 'show') {
+        //         $box.css('background-color', 'yellow');
+        //         console.log('show');
+        //     } else if (e.type === 'shown') {
+        //         setTimeout(function() {
+        //             $box.css('background-color', '');
+        //         }, 1000)
+        //         console.log('shown');
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

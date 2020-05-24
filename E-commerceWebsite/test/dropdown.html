@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dropdown</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <style>
+        /* dropdown */
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            position: relative;
+            z-index: 2;
+        }
+
+        .dropdown-arrow {
+            background-repeat: no-repeat;
+            vertical-align: middle;
+        }
+
+        .dropdown-layer {
+            z-index: 1;
+            display: none;
+            position: absolute;
+        }
+
+        .dropdown-left {
+            left: 0;
+        }
+
+        .dropdown-right {
+            right: 0;
+        }
+
+        /* menu dropdown */
+
+        .menu .dropdown-toggle {
+            display: block;
+            height: 100%;
+            padding: 0 15px 0 12px;
+            border-left: 1px solid #f3f5f7;
+            border-right: 1px solid #f3f5f7;
+        }
+
+        .menu .dropdown-arrow {
+            display: inline-block;
+            margin-left: 7px;
+            vertical-align: middle;
+        }
+
+        .menu .dropdown-layer {
+            z-index: 1;
+            top: 100%;
+            overflow: hidden;
+            border: 1px solid #cdd0d4;
+            background: #fff;
+        }
+
+        .menu-item {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 12px;
+            white-space: nowrap;
+            color: #4d555d;
+        }
+
+        .menu-item:hover {
+            background: #f3f5f7;
+        }
+
+        .menu-active .dropdown-toggle {
+            background-color: #fff;
+            border-color: #cdd0d4;
+        }
+
+
+        .icon-triangle-down {
+            width: 0;
+            height: 0;
+            border: 4px solid #4d555d;
+            border-left-color: transparent;
+            /* IE 背景颜色与border相同即可解决transparent不识别问题 */
+            _border-left-color: yellow;
+            border-right-color: transparent;
+            _border-right-color: yellow;
+            border-bottom: none;
+        }
+
+        .menu-active .icon-triangle-down {
+            border-bottom: 4px solid #f00;
+            border-top: none;
+        }
+
+        /* 图库字体 */
+
+        @font-face {
+            font-family: "iconfont";
+            src: url('font/iconfont.eot?t=1579337379353');
+            /* IE9 */
+            src: url('font/iconfont.eot?t=1579337379353#iefix') format('embedded-opentype'),
+                /* IE6-IE8 */
+                url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAKQAAsAAAAABjwAAAJEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcApAXwE2AiQDCAsGAAQgBYRtBzYbiwXILqEc20kk0GQIKLTktbruewCs8xEPX/v9zt23H3FPDN2zaCKTmE6kqrRIiHSrXsK/WtNLUgJhd3xYRpVIBfXB3j/fz/5+wRHoTo2tMq2uSjXL6OYEz1B+Ad7mf6BF4iBJJvoojs9zOb0JdCDzA51je9BYkyb1AurFgRToHhhFVkIZN4xd8AIfE6gxoKq0tnPUF3Mye1UgjgJPirlCVJZZoUqoaDiYxY2SqnSaXnEdfT/+zcccSalgt2webhux9pVTUjkv5yAgxAjoeAkF5giZ2G3MrqsIxlXUZKeMEMdqDL78CzziqE7B/jq7vg70QdUzqb2VAiR4rKlaCF2TNhEt+rHh88/n7YORv/3xpK3/5Gr8ZFvH7Lutims+oTXwZ4V4FQg+n2RWm8zVZvDW95ExD/NTtQ9f8C/UAweyobXdKWvqxtGk5RxtNWpQhoMtPqba2k9cDFXaJ/gr9WcoVBkjMzuHkloLqFBlETVm7R6v1YpURK7GjBuA0OQFSYMXFJq8kZkdo6TDHyo0RQU19sOFtSYiWJhQMhpQZxBol1rXywtxYxe9IpaU10b8ECkPEtCqN8uFXUyRltiSH3ttZguWXAI74DmMYwcZuRA1133mrNNo2KY31bVLxIJVBEkMGUA5AwKak7LBeLZQ+XwX8hRiEnX01ZVDiOSC2UFLXXMAuWtKB/U9yiu5Y542xixgEScBdsA8FIs5IGueF0Iaq/MnpDMdDWeYHWqqb29J/u4E1LDtKZzWQt1xIGMZ+hUpu0IIAAA=') format('woff2'), url('iconfont.woff?t=1579337379353') format('woff'), url('font/iconfont.ttf?t=1579337379353') format('truetype'),
+                /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+                url('font/iconfont.svg?t=1579337379353#iconfont') format('svg');
+            /* iOS 4.1- */
+        }
+
+        .icon {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .icon-xialajiantou:before {
+            content: "\e638";
+        }
+
+        [class*='-active'] .dropdown-arrow {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        .transition {
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+        }
+
+        .fadeOut {
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        .slideUpDownCollapse {
+            height: 0 !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        .slideLeftRigthCollapse {
+            width: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        .dropdown-loading {
+            width: 32px;
+            height: 32px;
+            background: url('../img/loading.gif') no-repeat;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="dropdown">
+        <div class="dropdown-toggle">我的慕淘
+            <i class="dropdown-arrow"></i>
+        </div>
+        <div class="dropdown-layer dropdown-left">
+        </div>
+    </div> -->
+
+
+    <div class="menu dropdown fl" data-active="menu" data-load="dropdown.json">
+        <a href="###" class="dropdown-toggle">我的慕淘
+            <i class="dropdown-arrow icon transition">&#xe638;</i>
+        </a>
+        <ul class="dropdown-layer dropdown-left">
+            <li class="dropdown-loading"></li>
+            <!-- <li><a href="javascript:;" target="_blank" class="menu-item">已买到的宝贝</a></li> -->
+            <!-- <li><a href="##" target="_blank" class="menu-item">我的足迹</a></li> -->
+        </ul>
+    </div>
+    <button id="btn-show">点我显示</button>
+    <button id="btn-hide">点我隐藏</button>
+
+    <div class="menu dropdown fl" data-active="menu">
+        <a href="###" class="dropdown-toggle">我的慕淘2
+            <i class="dropdown-arrow icon-triangle-down"></i>
+        </a>
+        <ul class="dropdown-layer dropdown-left">
+            <li><a href="##" target="_blank" class="menu-item">已买到的宝贝</a></li>
+            <li><a href="##" target="_blank" class="menu-item">我的足迹</a></li>
+        </ul>
+    </div>
+
+
+    <script crossorigin="anonymous" integrity="sha384-KcyRSlC9FQog/lJsT+QA8AUIFBgnwKM7bxm7/YaX+NTr4D00npYawrX0h+oXI3a2"
+        src="https://lib.baomitu.com/jquery/1.12.4/jquery.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>');
+    </script>
+    <script src="../js/transition.js"></script>
+    <script src="../js/showHide.js"></script>
+    <script src="../js/dropdown.js"></script>
+
+    <script>
+        //按需加载
+        //
+        $('.dropdown').on('dropdown-show', function (e, updatelayer) {
+            var $this = $(this),
+                dataLoad = $this.data('load');
+            if (!dataLoad) return;
+
+            if (!$this.data('loaded')) {
+                var $layer = $(this).find('.dropdown-layer'),
+                    html = '';
+                $.getJSON(dataLoad, function (data) {
+                    setTimeout(function () {
+                        for (var i = 0; i < data.length; i++) {
+                            html += ' <li><a href="' + data[i].url + '" target="_blank" class="menu-item">' + data[i].name + '</a></li>'
+                        }
+                        $layer.html(html);
+                        $this.data('loaded', true)
+                        updatelayer();
+                        // $layer.height('auto').height($layer.height());
+                        console.log('html ' + $layer.height());
+                    }, 1000);
+                })
+            }
+        })
+        $('#btn-show').on('click', function () {
+            $('.dropdown').dropdown('show');
+        })
+
+        $('#btn-hide').on('click', function () {
+            $('.dropdown').dropdown('hide');
+        })
+        $('.dropdown').dropdown({
+            // event: 'click',
+            css3: true,
+            js: true,
+            animation: 'slideUpDown',
+            // active: 'menu'
+            delay: 200
+        });
+
+        // $('.dropdown').each(function() {
+        //     dropdown($(this));
+        // });
+
+        // dropdown($('.dropdown')[0]);
+    </script>
+</body>
+
+</html>
